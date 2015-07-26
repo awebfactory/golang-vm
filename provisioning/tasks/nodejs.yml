@@ -16,7 +16,7 @@
 - name: Install Karma globally via npm
   npm: name=karma-cli global=yes
 
-- name: Grab healthy-gulp-seed and place it into conveniently visible dev dir
+- name: Grab sample angular app and place it into conveniently visible dev dir
   git:
-    repo: https://github.com/paislee/healthy-gulp-angular
-    dest: /vagrant/dev
+    repo: https://github.com/victorkane/recipe-js
+    dest: /vagrant/dev/recipe-js

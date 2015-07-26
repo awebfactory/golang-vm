@@ -1,17 +1,11 @@
 ## Ansible playbook - MEAN stack
 
-This Vagrant and Virtualbox based Ansible playbook sets up a MEAN stack (Mongodb, Node + Express suitable for back-end for Angular SPAs).
+This Vagrant and Virtualbox based Ansible playbook sets up a MEAN stack (Mongodb, Node + Express suitable for back-end for Angular SPAs) together with a sample AngularJS application run on a NodeJS server.
 
 ### Instructions
 
 * Install VirtualBox and Vagrant (make sure Vagrant is version 1.6.5 or later)
 * Install Ansible
-  * On MacBook Air and Pro, I had best results using Python's pip, which doesn't come with the version of Python that comes pre-installed on Macs. So if you have homebrew installed (and you should) you can do:
-
-````
-$ brew install python
-$ sudo pip install ansible
-````
 
 * Clone this project to a folder where you keep your VMs
 * First execute `vagrant box list` to check if `ubuntu/trusty64` is already on your laptop or desktop host system. If it isn't download the box with `vagrant box add ubuntu/trusty64`.
@@ -22,13 +16,15 @@ $ sudo pip install ansible
     192.168.46.100  mean01
 
 * Within the guest VM box, if you do your work in, say, `/vagrant/dev/project01` then in the VM dir `./dev/project01` you can access the files with your favorite editor or IDE or else edit via ssh remoting.  
+* The seed app is at `/vagrant/dev/recipe-js`
+
 * If you create and run a node.js app on port 3000, you can access it in your browser by pointing it at `http://mean01:3000`.
 
 ### Vagrantfile
 
 * Box used: [Ubuntu 14.04 64-bit (Trusty)](https://vagrantcloud.com/ubuntu/boxes/trusty64)
 * [Virtualbox settings:](https://www.virtualbox.org/manual/ch08.html#vboxmanage-modifyvm)
- * memory 512
+ * memory 1024
  * IP 192.168.46.100
 
 ### Playbook tasks
@@ -40,9 +36,11 @@ $ sudo pip install ansible
  * Installs MongoDB
 * Node.js installation:
  * Sets up [NodeSource](https://github.com/nodesource/distributions) for Ubuntu.
- * Installs latest version of Node.js.
- * Installs [Grunt](http://gruntjs.com/).
- * Installs [Gulp](http://gulpjs.com/).
+ * Installs NodeJS.
+ * Installs the following globally with `npm install -g`:
+   * Installs [Gulp](http://gulpjs.com/) .
+   * Installs [Bower](http://gulpjs.com/).
+   * Installs [Karma](http://gulpjs.com/).
 
 ### References
 
