@@ -4,8 +4,14 @@
 - name: Install Node.js package
   apt: pkg=nodejs update_cache=yes
 
-- name: Install Grunt via npm
-  npm: name=grunt-cli global=yes
+# - name: Install Grunt via npm
+#   npm: name=grunt-cli global=yes
 
 - name: Install Gulp via npm
   npm: name=gulp global=yes
+
+- name: Install Bower via npm
+  npm: name=bower global=yes
+
+- name: Install Karma globally via npm
+  npm: name=karma-cli global=yes
