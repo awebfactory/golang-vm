@@ -14,8 +14,17 @@ For persistence, two alternatives are included:
 
 * Clone this project to a folder where you keep your VMs
 * First execute `vagrant box list` to check if `ubuntu/trusty64` is already on your laptop or desktop host system. If it isn't download the box with `vagrant box add ubuntu/trusty64`.
+* If you receive messages to the effect that the box has a newer version, follow the instructions:
+
+````
+==> default: A newer version of the box 'ubuntu/trusty64' is available! You currently
+==> default: have version '20150609.0.10'. The latest is version '20151015.0.0'. Run
+==> default: `vagrant box update` to update.
+````
+
 * On the cammand-line in that folder, type `vagrant up`
-* The process will take a while, on my 4GB RAM MacBook Pro it took about 10 minutes. But that's just the first time, once you have it provisioned it starts up again very quickly. A large part of the initial slowness is the one-time provisioning via Ansible of the MEAN components.
+* The process will take a while, on my 4GB RAM MacBook Pro it took about 10 minutes. But that's just the first time, once you have it provisioned it starts up again very quickly. A large part of the initial slowness is the one-time provisioning via Ansible of the MEAN components, especially MongoDB.
+* Check out your new vm on the command line with `vagrant ssh`
 * Associate `http://golang-dev/` (or any other name you'd like) with local machine IP specified in the Vagrantfile (192.168.46.100 initially) by including the following line in `/etc/hosts`:
 
     192.168.46.100  golang-dev

@@ -1,6 +1,8 @@
 - hosts: all
   user: vagrant
   sudo: true
+  vars_files:
+  - vars.yml
 
   tasks:
     - name: Install packages
@@ -8,6 +10,24 @@
       with_items:
         - build-essential
         - git
+        - curl
+        - golang
+        - python-mysqldb
+        - mysql-server
+
+    - name: Disable the firewall (since this is for local dev only).
+      service: name=ufw state=stopped
+
+    - name: "Start MySQL."
+      service: "name={{ item }} state=started enabled=yes"
+      with_items:
+      - mysql
+
+    - name: Remove the MySQL test database.
+      mysql_db: db=test state=absent
+
+    - name: Create a database for golang-dev.
+      mysql_db: "db={{ domain }} state=present"
 
     - include: tasks/mongodb.yml
     - include: tasks/nodejs.yml
