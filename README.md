@@ -1,6 +1,11 @@
-## Ansible playbook - MEAN stack
+## Ansible playbook - golang vm
 
-This Vagrant and Virtualbox based Ansible playbook sets up a MEAN stack (Mongodb, Node + Express suitable for back-end for Angular SPAs) together with a sample AngularJS application run on a NodeJS server.
+This Vagrant and Virtualbox based Ansible playbook sets up a Go development environment.
+
+For persistence, two alternatives are included:
+
+* MongoDB as part of a complete MEAN stack (Mongodb, Node + Express suitable for back-end for Angular SPAs) together with a sample AngularJS application run on a NodeJS server.
+* MySql server  
 
 ### Instructions
 
@@ -11,21 +16,21 @@ This Vagrant and Virtualbox based Ansible playbook sets up a MEAN stack (Mongodb
 * First execute `vagrant box list` to check if `ubuntu/trusty64` is already on your laptop or desktop host system. If it isn't download the box with `vagrant box add ubuntu/trusty64`.
 * On the cammand-line in that folder, type `vagrant up`
 * The process will take a while, on my 4GB RAM MacBook Pro it took about 10 minutes. But that's just the first time, once you have it provisioned it starts up again very quickly. A large part of the initial slowness is the one-time provisioning via Ansible of the MEAN components.
-* Associate `http://mean01/` (or any other name you'd like) with local machine IP specified in the Vagrantfile (192.168.46.100 initially) by including the following line in `/etc/hosts`:
+* Associate `http://golang-dev/` (or any other name you'd like) with local machine IP specified in the Vagrantfile (192.168.46.100 initially) by including the following line in `/etc/hosts`:
 
-    192.168.46.100  mean01
+    192.168.46.100  golang-dev
 
 * Within the guest VM box, if you do your work in, say, `/vagrant/dev/project01` then in the VM dir `./dev/project01` you can access the files with your favorite editor or IDE or else edit via ssh remoting.  
-* The seed app is at `/vagrant/dev/recipe-js`
+* The MEAN stack example app is at `/vagrant/dev/recipe-js`
 
-* If you create and run a node.js app on port 3000, you can access it in your browser by pointing it at `http://mean01:3000`.
+* If you create and run a node.js app on port 3000, you can access it in your browser by pointing it at `http://golang-dev:3000`.
 
 ### Vagrantfile
 
 * Box used: [Ubuntu 14.04 64-bit (Trusty)](https://vagrantcloud.com/ubuntu/boxes/trusty64)
 * [Virtualbox settings:](https://www.virtualbox.org/manual/ch08.html#vboxmanage-modifyvm)
  * memory 1024
- * IP 192.168.46.100
+ * IP 192.168.76.103
 
 ### Playbook tasks
 
