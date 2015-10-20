@@ -1,5 +1,7 @@
 ## Ansible playbook - golang vm
 
+Spin up a golang development environment with a MEAN stack on the side.
+
 This Vagrant and Virtualbox based Ansible playbook sets up a Go development environment.
 
 For persistence, two alternatives are included:
