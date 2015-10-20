@@ -43,9 +43,11 @@ For persistence, two alternatives are included:
  * memory 1024
  * IP 192.168.76.103
 
-### Playbook tasks
+### Playbook tasks (see `provisioning/playbook.yml`)
 
-* Installs build-essential and git packages from Apt.
+* Installs build-essential, git and curl packages from Apt together with golang and mysql-server (including python-mysqldb in order to automate tasks with mysql).
+* The firewall is optionally disabled since the purpose is local development (comment out to omit).
+* MySql is started up, the test database removed and a golang-dev database created, with user root without password.
 * MongoDB installation:
  * Imports MongoDB's public GPG key.
  * Adds MongoDB's Apt source.
